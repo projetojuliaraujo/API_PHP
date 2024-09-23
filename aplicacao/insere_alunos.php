@@ -58,33 +58,27 @@
                                                                 <input type="text" name="email" class="form-control">                                                                
                                                             </div>                 
                                                             <div class="mb-3">
-                                                                <label class="form-label">ID curso</label>
-                                                                <input type="text" name="curso" class="form-control">                                                                
-                                                            </div>
-                                                            
-                                                            <div  class="mb-3">
-                                                                <label for="cursos-dropdown" class="form-label">Nome do Curso</label>
+                                                                <label class="form-label">ID curso</label> 
                                                                 <?php
-                                                                $url = 'http://localhost/exercicio/api.php/cursos';
-                                                                $reponse = file_get_contents($url);
+                                                                $url = 'http://localhost/api_php/api.php/cursos';
+                                                                $response = file_get_contents($url);
                                                                 $data = json_decode($response, true);
 
                                                                 if (isset($data['dados'])) {
                                                                     echo '<select class="form-select" id="cursos-dropdown" name="curso_id" required>';
-                                                                    echo '<option value="" disabled selected>Selecione um curso</option>;
+                                                                    echo '<option value="" disabled selected>Selecione um curso</option>';
                                                                     foreach ($data['dados'] as $curso) {
-                                                                        echo '<option value="' . $curso['id_curso'] . '">' . htmlspecialchars($curso['_nome_curso']) . '</options>;
+                                                                        echo '<option value="' . $curso['id_curso'] .'">' . htmlspecialchars($curso['nome_curso']) . '</options>';
                                                                     }
                                                                     echo '</select>';
                                                                 } else {
-                                                                    echo "<p>Nenhum curso  encontrado!<
+                                                                    echo '<p>Nenhum curso  encontrado!</p>';
                                                                 }
-                                                                }
-
-
-
-
-
+                                                                ?>                                                              
+                                                            </div>
+                                                            
+                                                            <div  class="mb-3">
+                                                                
                                                                 <button type="submit" class="btn btn-primary">Cadastrar</button>
                                                             
                                                         </form>

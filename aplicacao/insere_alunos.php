@@ -50,13 +50,15 @@
                                                         <h2>Insere novo aluno</h2>
                                                         <form action="cadastra_aluno.php" method="POST">
                                                             <div class="mb-3">
-                                                                <label class="form-label">Nome do aluno</label>
-                                                                <input type="text" name="nome" class="form-control">                                                                
+                                                                <label for="nome" class="form-label">Nome do aluno</label>
+                                                                <input type="text" id="nome"name="nome" class="form-control">                                                                
                                                             </div>
+
                                                             <div class="mb-3">
                                                                 <label class="form-label">Email do aluno</label>
                                                                 <input type="text" name="email" class="form-control">                                                                
-                                                            </div>                 
+                                                            </div>
+                                                                             
                                                             <div class="mb-3">
                                                                 <label class="form-label">ID curso</label> 
                                                                 <?php
@@ -65,10 +67,10 @@
                                                                 $data = json_decode($response, true);
 
                                                                 if (isset($data['dados'])) {
-                                                                    echo '<select class="form-select" id="cursos-dropdown" name="curso_id" required>';
+                                                                    echo '<select class="form-select" id="cursos-dropdown" name="curso" required>';
                                                                     echo '<option value="" disabled selected>Selecione um curso</option>';
                                                                     foreach ($data['dados'] as $curso) {
-                                                                        echo '<option value="' . $curso['id_curso'] .'">' . htmlspecialchars($curso['nome_curso']) . '</options>';
+                                                                        echo '<option value="' . $curso['id_curso'] .'">' . htmlspecialchars($curso['nome_curso']) . '</option>';
                                                                     }
                                                                     echo '</select>';
                                                                 } else {
